@@ -20,6 +20,12 @@ const navItems = [
     roles: ["admin", "user"],
   },
   {
+    title: "Referrals",
+    href: "/dashboard/referrals",
+    icon: <Users className="h-5 w-5" />,
+    roles: ["admin", "user"],
+  },
+  {
     title: "Manage Users",
     href: "/dashboard/users",
     icon: <Users className="h-5 w-5" />,
@@ -58,4 +64,3 @@ export function DashboardNav({ role }) {
     </nav>
   )
 }
-

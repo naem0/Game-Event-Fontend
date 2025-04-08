@@ -2,10 +2,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionItem } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
-import { Clock } from "lucide-react";
+import { Clock, Link } from "lucide-react";
 import logo from "../public/logo.png";
 import Image from "next/image";
 import { Progress } from "@radix-ui/react-progress";
+import { getAllTournament } from "../servises/getAllTournament";
 
 const MatchCard = ({ match }) => {
   return (
@@ -61,9 +62,9 @@ const MatchCard = ({ match }) => {
           <Button variant="success" className="bg-gray-800 text-white hover:bg-gray-700">
             Join Now
           </Button>
-          <Button variant="outline" className="bg-gray-800 text-white hover:bg-gray-700">
+          <Link variant="outline" className="bg-gray-800 text-white hover:bg-gray-700">
             View Details
-          </Button>
+          </Link>
         </div>
         {/* <div className="flex items-center justify-between mt-2">
           <Button variant="success">Watch Match</Button>
@@ -79,32 +80,18 @@ const MatchCard = ({ match }) => {
   );
 };
 
-export default function MatchList() {
-  const matches = [
-    {
-      id: "37545",
-      title: "CS (4 VS 4) | Mobile",
-      time: "27/03/2025 at 12:30 PM",
-      totalPrize: 300,
-      perKill: 0,
-      entryFee: 50,
-      map: "Bermuda",
-    },
-    {
-      id: "37544",
-      title: "CS (4 VS 4) | Mobile",
-      time: "27/03/2025 at 12:30 PM",
-      totalPrize: 300,
-      perKill: 0,
-      entryFee: 50,
-      map: "Bermuda",
-    },
-  ];
+export default async function MatchList() {
+  const matches = await getAllTournament(); // Fetch matches from the server or API
+  console.log(matches);
+  if (!matches || matches.length === 0) {
+    return <p className="text-center text-gray-500">No matches available</p>;
+  }
+  
 
   return (
     <div className=" grid grid-cols-1 md:grid-cols-3 items-center gap-4">
       {matches.map((match) => (
-        <MatchCard key={match.id} match={match} />
+        <MatchCard key={match._id} match={match} />
       ))}
     </div>
   );
