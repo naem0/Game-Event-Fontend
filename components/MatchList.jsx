@@ -11,14 +11,14 @@ const MatchCard = ({ match }) => {
   return (
     <Card className="w-full max-w-md p-4 border border-gray-200 shadow-md rounded-lg bg-gray-600 text-white">
       <CardContent className="space-y-3">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 pt-4">
           <div className="">
             <Image
               src={logo}
               alt="Match Thumbnail"
               width={60}
               height={60}
-              className="w-full object-cover rounded-lg mb-2"
+              className="rounded-lg mb-2"
             />
           </div>
           <div className="">
@@ -52,20 +52,20 @@ const MatchCard = ({ match }) => {
         </div>
 
         <div className="mt-4">
-          <Progress className="bg-white" value={33} />
+          <Progress className="bg-black" value={33} />
           <p className="text-sm text-gray-400">33% Joined</p>
           <p className="text-sm text-gray-400">Join the match to compete and win prizes!</p>
         </div>
 
-        <div className="flex items-center gap-3 mt-4">
-          <Button variant="outline" className="bg-gray-800 text-white hover:bg-gray-700">
+        <div className="flex items-center justify-between gap-3 mt-4">
+          <Button variant="success" className="bg-gray-800 text-white hover:bg-gray-700">
             Join Now
           </Button>
           <Button variant="outline" className="bg-gray-800 text-white hover:bg-gray-700">
             View Details
           </Button>
         </div>
-        <div className="flex items-center justify-between mt-2">
+        {/* <div className="flex items-center justify-between mt-2">
           <Button variant="success">Watch Match</Button>
           <Button variant="outline">Not Joined</Button>
         </div>
@@ -73,7 +73,7 @@ const MatchCard = ({ match }) => {
           <AccordionItem title="Total Prize Details">
             <p className="text-sm text-gray-600">More details about the prize pool.</p>
           </AccordionItem>
-        </Accordion>
+        </Accordion> */}
       </CardContent>
     </Card>
   );

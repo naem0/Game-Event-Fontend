@@ -30,9 +30,9 @@ export function Header() {
 
         <div className="flex items-center space-x-4">
           <Button variant="ghost" size="sm" asChild>
-            <Link href="/login">Login</Link>
+            <Link href="/login">Sign In</Link>
           </Button>
-          <Button size="sm" variant="outline" asChild>
+          <Button size="sm" className="bg-pink-600 hover:bg-pink-700">
             <Link href="/register">Register</Link>
           </Button>
           {/* <ModeToggle /> Optional - remove if not using */}
