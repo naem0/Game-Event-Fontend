@@ -18,7 +18,7 @@ export function ProfileForm({ user }) {
   const [imagePreview, setImagePreview] = useState(user.profileImage || "")
   const [isLoading, setIsLoading] = useState(false)
   const { toast } = useToast()
-  const { update } = useSession()
+  const { data: session, update } = useSession()
   const fileInputRef = useRef(null)
 
   const handleImageChange = (e) => {
@@ -54,7 +54,7 @@ export function ProfileForm({ user }) {
       const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/${user.id}`, {
         method: "PUT",
         headers: {
-          Authorization: `Bearer ${user.id}`,
+          Authorization: `Bearer ${session?.user.apiToken}`,
         },
         body: formData,
       })
@@ -88,7 +88,6 @@ export function ProfileForm({ user }) {
       setIsLoading(false)
     }
   }
-  
 
   const getInitials = (name) => {
     return name

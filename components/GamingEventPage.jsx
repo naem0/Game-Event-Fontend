@@ -5,7 +5,7 @@ import MatchList from "./MatchList";
 
 export default function GamingEventPage() {
     return (
-        <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
+        <div className="min-h-screen bg-gradient-to-b from-[#15161A] to-gray-900 text-white">
             {/* Hero Section */}
             <Banner/>
 

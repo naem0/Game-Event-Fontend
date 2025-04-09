@@ -23,14 +23,16 @@ export function UserManagement() {
   const { data: session } = useSession()
 
   useEffect(() => {
-    fetchUsers()
-  }, [])
+    if (session?.user?.apiToken) {
+      fetchUsers()
+    }
+  }, [session])
 
   const fetchUsers = async () => {
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users`, {
         headers: {
-          Authorization: `Bearer ${session?.user.id}`,
+          Authorization: `Bearer ${session?.user.apiToken}`,
         },
       })
 
@@ -55,10 +57,10 @@ export function UserManagement() {
     if (!selectedUser) return
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/${selectedUser.id}/promote`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/${selectedUser._id}/promote`, {
         method: "PUT",
         headers: {
-          Authorization: `Bearer ${session?.user.id}`,
+          Authorization: `Bearer ${session?.user.apiToken}`,
           "Content-Type": "application/json",
         },
       })
@@ -67,7 +69,7 @@ export function UserManagement() {
         throw new Error("Failed to promote user")
       }
 
-      setUsers(users.map((user) => (user.id === selectedUser.id ? { ...user, role: "admin" } : user)))
+      setUsers(users.map((user) => (user._id === selectedUser._id ? { ...user, role: "admin" } : user)))
 
       toast({
         title: "Success",
@@ -107,7 +109,7 @@ export function UserManagement() {
         </TableHeader>
         <TableBody>
           {users.map((user) => (
-            <TableRow key={user.id}>
+            <TableRow key={user._id}>
               <TableCell>{user.name}</TableCell>
               <TableCell>{user.email}</TableCell>
               <TableCell className="capitalize">{user.role}</TableCell>
@@ -142,4 +144,3 @@ export function UserManagement() {
     </div>
   )
 }
-

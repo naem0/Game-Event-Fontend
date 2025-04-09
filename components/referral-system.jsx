@@ -18,7 +18,7 @@ export function ReferralSystem() {
   const { toast } = useToast()
 
   useEffect(() => {
-    if (session?.user) {
+    if (session?.user?.apiToken) {
       fetchInviteLink()
       fetchReferralStats()
     }
@@ -28,7 +28,7 @@ export function ReferralSystem() {
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/referrals/invite`, {
         headers: {
-          Authorization: `Bearer ${session.user.id}`,
+          Authorization: `Bearer ${session.user.apiToken}`,
         },
       })
 
@@ -52,7 +52,7 @@ export function ReferralSystem() {
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/referrals/stats`, {
         headers: {
-          Authorization: `Bearer ${session.user.id}`,
+          Authorization: `Bearer ${session.user.apiToken}`,
         },
       })
 

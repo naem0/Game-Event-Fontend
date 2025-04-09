@@ -2,11 +2,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionItem } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
-import { Clock, Link } from "lucide-react";
+import { Clock } from "lucide-react";
 import logo from "../public/logo.png";
 import Image from "next/image";
 import { Progress } from "@radix-ui/react-progress";
 import { getAllTournament } from "../servises/getAllTournament";
+import Link from "next/link";
 
 const MatchCard = ({ match }) => {
   return (
@@ -62,8 +63,10 @@ const MatchCard = ({ match }) => {
           <Button variant="success" className="bg-gray-800 text-white hover:bg-gray-700">
             Join Now
           </Button>
-          <Link variant="outline" className="bg-gray-800 text-white hover:bg-gray-700">
-            View Details
+          <Link href={`match/${match?._id}`}>
+            <Button variant="success" className="bg-gray-800 text-white hover:bg-gray-700">
+              View Details
+            </Button>
           </Link>
         </div>
         {/* <div className="flex items-center justify-between mt-2">
@@ -86,7 +89,7 @@ export default async function MatchList() {
   if (!matches || matches.length === 0) {
     return <p className="text-center text-gray-500">No matches available</p>;
   }
-  
+
 
   return (
     <div className=" grid grid-cols-1 md:grid-cols-3 items-center gap-4">

@@ -30,7 +30,11 @@ export const authOptions = {
           const user = await response.json()
 
           if (response.ok && user) {
-            return user
+            // Include the JWT token in the user object
+            return {
+              ...user,
+              apiToken: user.token, // Store the JWT token
+            }
           }
 
           return null
@@ -46,6 +50,7 @@ export const authOptions = {
       if (user) {
         token.id = user.id
         token.role = user.role
+        token.apiToken = user.apiToken // Store the JWT token in the token
       }
       return token
     },
@@ -53,6 +58,7 @@ export const authOptions = {
       if (token) {
         session.user.id = token.id
         session.user.role = token.role
+        session.user.apiToken = token.apiToken // Make the JWT token available in the session
       }
       return session
     },
@@ -70,4 +76,3 @@ export const authOptions = {
 const handler = NextAuth(authOptions)
 
 export { handler as GET, handler as POST }
-

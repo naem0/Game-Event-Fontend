@@ -1,8 +1,13 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import { Button } from "@/components/ui/button"
+import { getServerSession } from "next-auth"
 // import { ModeToggle } from "@/components/mode-toggle" // optional dark mode toggle
 import Link from "next/link"
+import { UserNav } from "./user-nav"
 
-export function Header() {
+export async function Header() {
+  const session = await getServerSession(authOptions)
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-black/25 backdrop-blur ">
       <div className="container mx-auto flex h-16 items-center justify-between">
@@ -27,16 +32,25 @@ export function Header() {
             </Link>
           </nav>
         </div>
+        {
+          session ? (
+            <div className="flex items-center space-x-4">
+              <UserNav user={session.user} />
+              {/* <ModeToggle /> Optional - remove if not using */}
+            </div>
+          ) : (
+            <div className="flex items-center space-x-4">
+              <Button variant="ghost" size="sm" asChild>
+                <Link href="/login">Sign In</Link>
+              </Button>
+              <Button size="sm" className="bg-pink-600 hover:bg-pink-700">
+                <Link href="/register">Register</Link>
+              </Button>
+              {/* <ModeToggle /> Optional - remove if not using */}
+            </div>
+          )
+        }
 
-        <div className="flex items-center space-x-4">
-          <Button variant="ghost" size="sm" asChild>
-            <Link href="/login">Sign In</Link>
-          </Button>
-          <Button size="sm" className="bg-pink-600 hover:bg-pink-700">
-            <Link href="/register">Register</Link>
-          </Button>
-          {/* <ModeToggle /> Optional - remove if not using */}
-        </div>
       </div>
     </header>
   )

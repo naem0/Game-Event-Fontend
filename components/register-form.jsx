@@ -128,7 +128,7 @@ export function RegisterForm() {
           </CardContent>
         </Card>
       )}
-      
+
       <div className="space-y-2">
         <Label htmlFor="name">Name</Label>
         <Input id="name" value={name} onChange={(e) => setName(e.target.value)} required />
