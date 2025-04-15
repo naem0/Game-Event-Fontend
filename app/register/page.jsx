@@ -1,4 +1,5 @@
 import { RegisterForm } from "@/components/register-form"
+import { Suspense } from "react"
 
 export default function RegisterPage({ searchParams }) {
   return (
