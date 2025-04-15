@@ -48,7 +48,7 @@ export default function TournamentForm({ tournament = null }) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   // user session from useSession
   const { data: session } = useSession()
-  const token = session?.user?.token
+  const token = session?.user?.apiToken;
 
 
   const form = useForm({

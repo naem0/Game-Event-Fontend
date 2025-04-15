@@ -1,12 +1,17 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import GamingEventPage from "@/components/GamingEventPage"
+import { HomeBanner } from "@/components/home-banner"
+import { TournamentMoodSection } from "@/components/tournament-mood-section"
+import { TournamentSection } from "@/components/tournament-section"
+import { AchievementsSection } from "@/components/achievements-section"
+import { HistoricalTournamentsSection } from "@/components/historical-tournaments-section"
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="">
-      <GamingEventPage/>
+    <div>
+      <HomeBanner />
+      <TournamentMoodSection />
+      <TournamentSection />
+      <AchievementsSection />
+      <HistoricalTournamentsSection />
     </div>
   )
 }
-
