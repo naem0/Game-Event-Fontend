@@ -4,7 +4,7 @@ import { Facebook, Twitter, Instagram, Youtube } from "lucide-react"
 export function MainFooter() {
   return (
     <footer className="bg-background border-t">
-      <div className="container mx py-12 md:py-16">
+      <div className="container mx py-12 md:py-16 mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <h3 className="text-lg font-bold">GameTournaments</h3>

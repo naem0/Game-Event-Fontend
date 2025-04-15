@@ -40,20 +40,17 @@ export function HistoricalTournamentsSection() {
   }
 
   return (
-    <section className="py-12 bg-black text-white">
+    <section className="py-12 bg-background dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold">Historical Tournaments Ever</h2>
-          <p className="text-gray-400 mt-2">Our past tournaments and achievements</p>
+          <p className="text-muted-foreground mt-2">Our past tournaments and achievements</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {tournaments.map((tournament) => (
-            <Card
-              key={tournament._id}
-              className="overflow-hidden hover:shadow-md transition-shadow bg-gray-900 border-gray-800"
-            >
-              <div className="h-40 bg-gray-800">
+            <Card key={tournament._id} className="overflow-hidden hover:shadow-md transition-shadow">
+              <div className="h-40 bg-muted">
                 <img
                   src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${tournament.coverImage}`}
                   alt={tournament.title}
@@ -62,8 +59,8 @@ export function HistoricalTournamentsSection() {
               </div>
               <CardContent className="p-4">
                 <div className="flex justify-between items-center mb-2">
-                  <h3 className="font-bold text-white">{tournament.title}</h3>
-                  <span className="text-xs text-gray-400">
+                  <h3 className="font-bold">{tournament.title}</h3>
+                  <span className="text-xs text-muted-foreground">
                     {format(new Date(tournament.matchSchedule), "MMM d, yyyy")}
                   </span>
                 </div>
@@ -73,9 +70,9 @@ export function HistoricalTournamentsSection() {
                     alt={`${tournament.game} logo`}
                     className="h-6 w-6 object-contain"
                   />
-                  <span className="text-sm font-medium text-gray-300">{tournament.game}</span>
+                  <span className="text-sm font-medium">{tournament.game}</span>
                 </div>
-                <div className="flex justify-between text-sm text-gray-300">
+                <div className="flex justify-between text-sm">
                   <span>
                     Prize Pool: <span className="font-medium">{tournament.winningPrize} Taka</span>
                   </span>

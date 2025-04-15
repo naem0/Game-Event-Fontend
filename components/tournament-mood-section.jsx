@@ -53,16 +53,16 @@ export function TournamentMoodSection() {
   }
 
   return (
-    <section className="py-12 bg-black text-white">
+    <section className="py-12 bg-background dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold">Tournament Events</h2>
-          <p className="text-gray-400 mt-2">Choose your preferred tournament mood</p>
+          <p className="text-muted-foreground mt-2">Choose your preferred tournament mood</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {moods.map((mood) => (
-            <Card key={mood} className="text-center hover:shadow-md transition-shadow bg-gray-900 border-gray-800">
+            <Card key={mood} className="text-center hover:shadow-md transition-shadow">
               <div className="h-40 overflow-hidden">
                 <img
                   src={getMoodImage(mood) || "/placeholder.svg"}
@@ -71,11 +71,11 @@ export function TournamentMoodSection() {
                 />
               </div>
               <CardHeader>
-                <CardTitle className="text-white">{mood}</CardTitle>
-                <CardDescription className="text-gray-400">Tournament Mode</CardDescription>
+                <CardTitle>{mood}</CardTitle>
+                <CardDescription>Tournament Mode</CardDescription>
               </CardHeader>
               <CardContent>
-                <Button asChild variant="outline" className="border-gray-700 hover:bg-gray-800">
+                <Button asChild variant="outline">
                   <Link href={`/tournaments?mood=${mood}`}>View Tournaments</Link>
                 </Button>
               </CardContent>
