@@ -10,7 +10,7 @@ import { useToast } from "@/hooks/use-toast"
 import { signIn } from "next-auth/react"
 import { Card, CardContent } from "@/components/ui/card"
 
-export function RegisterForm() {
+export function RegisterForm({ referralCode }) {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -23,11 +23,10 @@ export function RegisterForm() {
 
   // Check for referral code in URL
   useEffect(() => {
-    const referralCode = searchParams.get("ref")
     if (referralCode) {
       processReferral(referralCode)
     }
-  }, [searchParams])
+  }, [referralCode])
 
   // Process referral code
   const processReferral = async (referralCode) => {
