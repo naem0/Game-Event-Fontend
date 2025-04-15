@@ -30,10 +30,6 @@ export function UserTournaments() {
         },
       })
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch your tournament registrations")
-      }
-
       const data = await response.json()
       setRegistrations(data)
     } catch (error) {

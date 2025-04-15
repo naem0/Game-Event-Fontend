@@ -11,10 +11,6 @@ async function getTournament(id, token) {
     cache: "no-store",
   })
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch tournament")
-  }
-
   return response.json()
 }
 
@@ -25,7 +21,7 @@ export default async function EditTournamentPage({ params }) {
     redirect("/dashboard")
   }
 
-  const tournament = await getTournament(params.id, session.user.apiToken)
+  const tournament = await getTournament(params?.id, session.user.apiToken)
 
   return (
     <div className="space-y-6">
