@@ -22,15 +22,14 @@ export default async function DashboardPage() {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Quick Stats</CardTitle>
-            <CardDescription>Your account overview</CardDescription>
+            <CardTitle>Account Balance</CardTitle>
+            <CardDescription>Your current balance</CardDescription>
           </CardHeader>
           <CardContent>
-            <p>Last login: Today</p>
+            <p className="text-3xl font-bold">{session?.user.balance || 0} Taka</p>
           </CardContent>
         </Card>
       </div>
     </div>
   )
 }
-

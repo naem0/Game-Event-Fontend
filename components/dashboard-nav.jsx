@@ -6,8 +6,10 @@ import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { LayoutDashboard, Users, Settings, User, History, DollarSign, Trophy, Wallet, Menu } from "lucide-react"
+import { LayoutDashboard, Users, Settings, User, History, DollarSign, Trophy, Wallet, Menu } from 'lucide-react'
+import { useSession } from "next-auth/react"
 
+// Update the navItems array to include the prize money pages
 const navItems = [
   {
     title: "Dashboard",
@@ -40,6 +42,12 @@ const navItems = [
     roles: ["admin", "user"],
   },
   {
+    title: "Prize Money",
+    href: "/dashboard/prizes",
+    icon: <DollarSign className="h-5 w-5" />,
+    roles: ["admin", "user"],
+  },
+  {
     title: "Referrals",
     href: "/dashboard/referrals",
     icon: <Users className="h-5 w-5" />,
@@ -64,6 +72,12 @@ const navItems = [
     roles: ["admin"],
   },
   {
+    title: "Prize Management",
+    href: "/dashboard/admin/prizes",
+    icon: <Trophy className="h-5 w-5" />,
+    roles: ["admin"],
+  },
+  {
     title: "Tournament Management",
     href: "/dashboard/admin/tournaments",
     icon: <Trophy className="h-5 w-5" />,
@@ -78,6 +92,7 @@ const navItems = [
 ]
 
 export function DashboardNav({ role }) {
+  const { data: session } = useSession()
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
 
@@ -115,6 +130,12 @@ export function DashboardNav({ role }) {
           </SheetTrigger>
           <SheetContent side="left" className="w-64 p-4">
             <div className="mb-4 font-bold">Dashboard Menu</div>
+            {session?.user && (
+              <div className="mb-4 p-3 bg-muted rounded-md">
+                <p className="text-sm font-medium">Balance</p>
+                <p className="text-xl font-bold">{session.user.balance || 0} Taka</p>
+              </div>
+            )}
             <NavLinks />
           </SheetContent>
         </Sheet>
@@ -122,6 +143,12 @@ export function DashboardNav({ role }) {
 
       {/* Desktop Navigation */}
       <nav className="hidden md:block w-64 border-r bg-muted/40 p-4">
+        {session?.user && (
+          <div className="mb-4 p-3 bg-muted rounded-md">
+            <p className="text-sm font-medium">Balance</p>
+            <p className="text-xl font-bold">{session.user.balance || 0} Taka</p>
+          </div>
+        )}
         <NavLinks />
       </nav>
     </>

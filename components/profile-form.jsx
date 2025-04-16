@@ -102,7 +102,7 @@ export function ProfileForm({ user }) {
       <div className="flex flex-col items-center space-y-4">
         <div className="relative">
           <Avatar className="h-24 w-24">
-            {imagePreview && <AvatarImage src={imagePreview} alt={name} />}
+            {imagePreview && <AvatarImage src={imagePreview || "/placeholder.svg"} alt={name} />}
             <AvatarFallback className="text-lg">{getInitials(name)}</AvatarFallback>
           </Avatar>
           <Button
@@ -116,6 +116,22 @@ export function ProfileForm({ user }) {
           <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={handleImageChange} />
         </div>
         <p className="text-sm text-muted-foreground">Click the camera icon to upload a profile picture</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="space-y-2">
+          <Label>Account Balance</Label>
+          <div className="p-3 bg-muted rounded-md">
+            <p className="text-xl font-bold">{user.balance || 0} Taka</p>
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <Label>Referral Code</Label>
+          <div className="p-3 bg-muted rounded-md">
+            <p className="text-lg font-semibold">{user.referralCode || "N/A"}</p>
+          </div>
+        </div>
       </div>
 
       <div className="space-y-2">

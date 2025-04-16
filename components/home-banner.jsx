@@ -2,6 +2,8 @@
 
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import banner from "@/public/banner-bg.jpg"
+import bgBanner from "@/public/banner.jpg"
 
 export function HomeBanner() {
   return (
@@ -9,7 +11,8 @@ export function HomeBanner() {
       <div className="absolute inset-0 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: "url('/placeholder.svg?height=1080&width=1920')" }}
+          style={{ backgroundImage: `url(${banner.src})` }}
+          // style={{ backgroundImage: "url('/placeholder.svg?height=1080&width=1920')" }}
         ></div>
       </div>
       <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">

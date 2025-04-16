@@ -37,6 +37,10 @@ export function UserNav({ user }) {
             <p className="text-sm font-medium">{user.name}</p>
             <p className="text-xs text-muted-foreground">{user.email}</p>
             <p className="text-xs font-semibold capitalize">{user.role}</p>
+            <div className="mt-1 pt-1 border-t">
+              <p className="text-xs text-muted-foreground">Balance</p>
+              <p className="text-sm font-bold">{user.balance || 0} Taka</p>
+            </div>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
@@ -55,4 +59,3 @@ export function UserNav({ user }) {
     </DropdownMenu>
   )
 }
-
