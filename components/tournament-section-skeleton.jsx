@@ -3,7 +3,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card"
 
 export function TournamentSectionSkeleton() {
   return (
-    <div className="py-12 px-4 bg-gray-50">
+    <div className="py-12 px-4 bg-background dark:bg-gray-900">
       <div className="text-center mb-10">
         <Skeleton className="h-8 w-64 mx-auto mb-4" />
         <Skeleton className="h-4 w-full max-w-[700px] mx-auto" />
