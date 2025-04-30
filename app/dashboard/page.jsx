@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { useSession } from "next-auth/react"
 import { DashboardSkeleton } from "@/components/dashboard-skeleton"
+import { Card } from "@/components/ui/card"
 
 export default function DashboardPage() {
   const { data: session } = useSession()
@@ -47,54 +48,54 @@ export default function DashboardPage() {
 
       {/* Display user data */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <div className="bg-white p-6 rounded-lg shadow">
+        <Card className=" p-6">
           <h2 className="text-sm font-medium text-gray-500">Current Balance</h2>
           <p className="text-3xl font-bold">{userData?.balance || 0} Taka</p>
-        </div>
+        </Card>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <Card className="p-6">
           <h2 className="text-sm font-medium text-gray-500">Referral Code</h2>
           <p className="text-xl font-semibold">{userData?.referralCode || "N/A"}</p>
-        </div>
+        </Card>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <Card className="p-6">
           <h2 className="text-sm font-medium text-gray-500">Referrals</h2>
           <p className="text-3xl font-bold">{userData?.referralCount || 0}</p>
-        </div>
+        </Card>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <Card className="p-6">
           <h2 className="text-sm font-medium text-gray-500">Account Type</h2>
           <p className="text-xl font-semibold capitalize">{userData?.role || "User"}</p>
-        </div>
+        </Card>
       </div>
 
       {/* Rest of your dashboard content */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <div className="col-span-2 bg-white p-6 rounded-lg shadow">
+        <Card className="col-span-2 p-6">
           <h2 className="text-xl font-bold mb-4">Recent Activity</h2>
           <p className="text-gray-500">Your recent activity will appear here</p>
-        </div>
+        </Card>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <Card className="p-6">
           <h2 className="text-xl font-bold mb-4">Quick Actions</h2>
           <div className="space-y-4">
-            <a href="/dashboard/balance" className="block p-3 bg-blue-50 text-blue-700 rounded-md hover:bg-blue-100">
+            <a href="/dashboard/balance" className="block p-3 bg-blue-900/10 text-blue-700 rounded-md hover:bg-blue-900/20">
               Add Balance
             </a>
             <a
               href="/dashboard/tournaments"
-              className="block p-3 bg-green-50 text-green-700 rounded-md hover:bg-green-100"
+              className="block p-3 bg-green-900/10 text-green-700 rounded-md hover:bg-green-900/20"
             >
               Join Tournament
             </a>
             <a
               href="/dashboard/referrals"
-              className="block p-3 bg-purple-50 text-purple-700 rounded-md hover:bg-purple-100"
+              className="block p-3 bg-purple-900/10 text-purple-700 rounded-md hover:bg-purple-900/20"
             >
               Invite Friends
             </a>
           </div>
-        </div>
+        </Card>
       </div>
     </div>
   )
