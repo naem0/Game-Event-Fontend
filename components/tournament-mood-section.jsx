@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { useToast } from "@/hooks/use-toast"
+import { TournamentMoodSkeleton } from "./tournament-mood-skeleton"
 
 export function TournamentMoodSection() {
   const [moods, setMoods] = useState([])
@@ -49,7 +50,7 @@ export function TournamentMoodSection() {
   }
 
   if (loading) {
-    return <div>Loading tournament moods...</div>
+    return <TournamentMoodSkeleton />
   }
 
   return (

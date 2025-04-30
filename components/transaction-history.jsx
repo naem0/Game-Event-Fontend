@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast"
 import { ChevronLeft, ChevronRight, Search } from "lucide-react"
 import { format } from "date-fns"
+import { TransactionSkeleton } from "@/components/transaction-skeleton"
 
 export function TransactionHistory() {
   const [transactions, setTransactions] = useState([])
@@ -93,7 +94,7 @@ export function TransactionHistory() {
   }
 
   if (loading) {
-    return <div>Loading transaction history...</div>
+    return <TransactionSkeleton />
   }
 
   return (

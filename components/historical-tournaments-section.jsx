@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { useToast } from "@/hooks/use-toast"
 import { format } from "date-fns"
+import { HistoricalTournamentsSkeleton } from "./historical-tournaments-skeleton"
 
 export function HistoricalTournamentsSection() {
   const [tournaments, setTournaments] = useState([])
@@ -36,7 +37,7 @@ export function HistoricalTournamentsSection() {
   }
 
   if (loading) {
-    return <div>Loading historical tournaments...</div>
+    return <HistoricalTournamentsSkeleton />
   }
 
   return (

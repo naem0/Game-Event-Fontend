@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast"
 import { ChevronLeft, ChevronRight, Search, FileText } from "lucide-react"
 import { format } from "date-fns"
+import { TopUpSkeleton } from "@/components/top-up-skeleton"
 
 export function TopUpHistory() {
   const [topUps, setTopUps] = useState([])
@@ -106,7 +107,7 @@ export function TopUpHistory() {
   }
 
   if (loading) {
-    return <div>Loading top-up history...</div>
+    return <TopUpSkeleton />
   }
 
   return (
@@ -167,9 +168,9 @@ export function TopUpHistory() {
                         <TableCell>{getStatusBadge(topUp.status)}</TableCell>
                         <TableCell>
                           <Button variant="ghost" size="icon" asChild>
-                            {/* <a href={`/dashboard/topup/${topUp._id}`} target="_blank" rel="noopener noreferrer">
+                            <a href={`/dashboard/topup/${topUp._id}`} target="_blank" rel="noopener noreferrer">
                               <FileText className="h-4 w-4" />
-                            </a> */}
+                            </a>
                           </Button>
                         </TableCell>
                       </TableRow>

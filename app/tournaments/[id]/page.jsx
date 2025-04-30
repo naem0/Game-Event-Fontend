@@ -13,7 +13,7 @@ async function getTournament(id) {
 }
 
 export default async function TournamentDetailsPage({ params }) {
-  const tournament = await getTournament(params.id)
+  const tournament = await getTournament(params?.id)
 
   return <TournamentDetails tournament={tournament} />
 }

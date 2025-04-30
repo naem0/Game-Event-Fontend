@@ -5,6 +5,7 @@ import { TournamentCard } from "@/components/tournament-card"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
 import Link from "next/link"
+import { TournamentSectionSkeleton } from "./tournament-section-skeleton"
 
 export function TournamentSection() {
   const [tournaments, setTournaments] = useState([])
@@ -38,7 +39,7 @@ export function TournamentSection() {
   }
 
   if (loading) {
-    return <div>Loading tournaments...</div>
+    return <TournamentSectionSkeleton />
   }
 
   return (

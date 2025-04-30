@@ -1,12 +1,31 @@
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
+"use client"
+
+import { useState, useEffect } from "react"
+import { useSession } from "next-auth/react"
 import { TopUpForm } from "@/components/top-up-form"
 import { WithdrawalForm } from "@/components/withdrawal-form"
 import { TransferForm } from "@/components/transfer-form"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { BalanceFormSkeleton } from "@/components/balance-form-skeleton"
 
-export default async function BalancePage() {
-  const session = await getServerSession(authOptions)
+export default function BalancePage() {
+  const { data: session, status } = useSession()
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    if (status !== "loading") {
+      // Short timeout to ensure smooth transition
+      const timer = setTimeout(() => {
+        setLoading(false)
+      }, 500)
+
+      return () => clearTimeout(timer)
+    }
+  }, [status])
+
+  if (loading) {
+    return <BalanceFormSkeleton />
+  }
 
   return (
     <div className="space-y-6">
