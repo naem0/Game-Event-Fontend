@@ -130,12 +130,6 @@ export function DashboardNav({ role }) {
           </SheetTrigger>
           <SheetContent side="left" className="w-64 p-4">
             <div className="mb-4 font-bold">Dashboard Menu</div>
-            {session?.user && (
-              <div className="mb-4 p-3 bg-muted rounded-md">
-                <p className="text-sm font-medium">Balance</p>
-                <p className="text-xl font-bold">{session.user.balance || 0} Taka</p>
-              </div>
-            )}
             <NavLinks />
           </SheetContent>
         </Sheet>
@@ -143,12 +137,6 @@ export function DashboardNav({ role }) {
 
       {/* Desktop Navigation */}
       <nav className="hidden md:block w-64 border-r bg-muted/40 p-4">
-        {session?.user && (
-          <div className="mb-4 p-3 bg-muted rounded-md">
-            <p className="text-sm font-medium">Balance</p>
-            <p className="text-xl font-bold">{session.user.balance || 0} Taka</p>
-          </div>
-        )}
         <NavLinks />
       </nav>
     </>
