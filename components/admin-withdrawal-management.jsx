@@ -230,7 +230,7 @@ export function AdminWithdrawalManagement() {
   }
 
   if (loading) {
-    return <div>Loading withdrawal requests...</div>
+    return <div>Loading withdrawal requests... </div>
   }
 
   return (
