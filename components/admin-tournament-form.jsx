@@ -142,7 +142,8 @@ export function AdminTournamentForm({ tournament, onSuccess }) {
       const response = await fetch(url, {
         method,
         headers: {
-          Authorization: `Bearer ${session?.user.apiToken}`,
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${session?.user.apiToken}`,
         },
         body: formData,
       })
