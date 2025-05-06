@@ -169,6 +169,7 @@ export function AdminTournamentForm({ tournament, onSuccess }) {
         description: error.message || "Failed to save tournament",
         variant: "destructive",
       })
+      console.error("Error saving tournament:", error)
     } finally {
       setIsLoading(false)
     }
