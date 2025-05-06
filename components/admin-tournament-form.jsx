@@ -148,6 +148,7 @@ export function AdminTournamentForm({ tournament, onSuccess }) {
       })
 
       if (!response.ok) {
+        console.log(response);
         const error = await response.json()
         throw new Error(error.message || "Failed to save tournament")
       }
