@@ -43,7 +43,6 @@ export async function addTournament(tournamentData, token) {
         const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/tournaments`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify(tournamentData),
@@ -65,7 +64,6 @@ export async function updateTournament(id, tournamentData, token) {
         const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/tournaments/${id}`, {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify(tournamentData),
