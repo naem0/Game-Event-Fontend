@@ -43,7 +43,7 @@ export async function addTournament(tournamentData, token) {
         const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/tournaments`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "multipart/form-data",
                 Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify(tournamentData),
