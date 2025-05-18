@@ -142,12 +142,14 @@ export function AdminTournamentForm({ tournament, onSuccess }) {
       const response = await fetch(url, {
         method,
         headers: {
-          Authorization: `Bearer ${session?.user.apiToken}`,
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${session?.user.apiToken}`,
         },
         body: formData,
       })
 
       if (!response.ok) {
+        console.log(response);
         const error = await response.json()
         throw new Error(error.message || "Failed to save tournament")
       }
@@ -168,6 +170,7 @@ export function AdminTournamentForm({ tournament, onSuccess }) {
         description: error.message || "Failed to save tournament",
         variant: "destructive",
       })
+      console.error("Error saving tournament:", error)
     } finally {
       setIsLoading(false)
     }
