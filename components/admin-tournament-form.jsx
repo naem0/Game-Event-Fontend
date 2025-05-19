@@ -142,7 +142,6 @@ export function AdminTournamentForm({ tournament, onSuccess }) {
       const response = await fetch(url, {
         method,
         headers: {
-          'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${session?.user.apiToken}`,
         },
         body: formData,
@@ -151,7 +150,11 @@ export function AdminTournamentForm({ tournament, onSuccess }) {
       if (!response.ok) {
         console.log(response);
         const error = await response.json()
-        throw new Error(error.message || "Failed to save tournament")
+        toast({
+          title: "Error",
+          description: error.message || "Failed to save tournament",
+          variant: "destructive",
+        })
       }
 
       const data = await response.json()
