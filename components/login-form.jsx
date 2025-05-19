@@ -72,6 +72,25 @@ export function LoginForm() {
           Register
         </Link>
       </div>
+      {/* For Staging */}
+      <div>
+        <h4 className="text-lg font-bold text-center text-red-500 mb-3">
+          Damo Login
+        </h4>
+        <div className="flex gap-4 justify-between text-gray-700 dark:text-gray-200">
+          <div className="text-start text-sm">
+            <p>For Admin</p>
+            <p>Email: admin@example.com </p>
+            <p>Password: admin1234</p>
+          </div>
+          <div className="text-start text-sm">
+            <p>For User</p>
+            <p>Email: user@example.com </p>
+            <p>Password: user1234</p>
+          </div>
+        </div>
+        </div>
+      {/* End For Staging */}
     </form>
   )
 }
