@@ -46,7 +46,7 @@ export function UserTournaments() {
   if (loading) {
     return <div>Loading your tournaments...</div>
   }
-
+console.log("User Registrations:", registrations)
   return (
     <Card>
       <CardHeader>
@@ -61,6 +61,7 @@ export function UserTournaments() {
                 <TableRow>
                   <TableHead>Tournament</TableHead>
                   <TableHead>Player Details</TableHead>
+                  <TableHead>Room Details</TableHead>
                   <TableHead>Schedule</TableHead>
                   <TableHead>Status</TableHead>
                   <TableHead>Actions</TableHead>
@@ -85,6 +86,10 @@ export function UserTournaments() {
                     <TableCell>
                       <p className="font-medium">{registration.playerName}</p>
                       <p className="text-xs font-mono">{registration.playerID}</p>
+                    </TableCell>
+                    <TableCell>
+                      <p className="font-medium">Room Id: {registration?.tournament?.roomId}</p>
+                      <p className="text-xs font-mono">Room Password: {registration?.tournament?.roomPassword}</p>
                     </TableCell>
                     <TableCell>
                       {format(new Date(registration.tournament.matchSchedule), "MMM d, yyyy h:mm a")}

@@ -11,7 +11,7 @@ import { useSession } from "next-auth/react"
 import { useToast } from "@/hooks/use-toast"
 import { useRouter } from "next/navigation"
 import { format } from "date-fns"
-import { CalendarDays, MapPin, Trophy, Swords, Users, Clock, DollarSign, Gamepad2 } from "lucide-react"
+import { CalendarDays, MapPin, Trophy, Swords, Users, Clock, DollarSign, Gamepad2, Link } from "lucide-react"
 
 export function TournamentDetails({ tournament }) {
   const [joinDialogOpen, setJoinDialogOpen] = useState(false)
@@ -267,11 +267,14 @@ export function TournamentDetails({ tournament }) {
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-4">Need Help?</h3>
                 <p className="text-muted-foreground mb-4">
-                  If you have any questions about this tournament, please contact our support team.
+                  If you have any questions about this tournament, please contact our support team. 01764450026 
                 </p>
-                <Button variant="outline" className="w-full">
+                <a
+                  href="tel:+8801764450026"
+                  className="w-full inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                >
                   Contact Support
-                </Button>
+                </a>
               </CardContent>
             </Card>
           </div>

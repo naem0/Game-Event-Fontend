@@ -32,10 +32,10 @@ export default function BalancePage() {
       <h1 className="text-3xl font-bold">Balance Management</h1>
 
       <Tabs defaultValue="topup" className="w-full">
-        <TabsList className="grid w-full grid-cols-3">
+        <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="topup">Top Up</TabsTrigger>
           <TabsTrigger value="withdraw">Withdraw</TabsTrigger>
-          <TabsTrigger value="transfer">Transfer</TabsTrigger>
+          {/* <TabsTrigger value="transfer">Transfer</TabsTrigger> */}
         </TabsList>
         <TabsContent value="topup">
           <TopUpForm />

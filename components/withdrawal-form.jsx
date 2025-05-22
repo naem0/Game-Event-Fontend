@@ -8,6 +8,9 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { useToast } from "@/hooks/use-toast"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import bkashLogo from "@/public/BKash_Logo_icon-700x662.png"
+import nagadLogo from "@/public/Nagad_Logo_full-498x700.png"
+import Image from "next/image"
 
 export function WithdrawalForm({ onSuccess }) {
   const [amount, setAmount] = useState("")
@@ -109,10 +112,12 @@ export function WithdrawalForm({ onSuccess }) {
                 }`}
               >
                 <RadioGroupItem value="bkash" id="bkash-withdraw" className="sr-only" />
-                <img
-                  src="/placeholder.svg?height=60&width=100&text=bKash"
+                <Image
+                  src={bkashLogo}
                   alt="bKash"
                   className="h-10 object-contain"
+                  width={100}
+                  height={100}
                 />
                 <span className="mt-2 text-sm font-medium">bKash</span>
               </Label>
@@ -123,8 +128,10 @@ export function WithdrawalForm({ onSuccess }) {
                 }`}
               >
                 <RadioGroupItem value="nagad" id="nagad-withdraw" className="sr-only" />
-                <img
-                  src="/placeholder.svg?height=60&width=100&text=Nagad"
+                <Image
+                  src={nagadLogo}
+                  width={100}
+                  height={100}
                   alt="Nagad"
                   className="h-10 object-contain"
                 />

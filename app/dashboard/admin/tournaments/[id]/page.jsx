@@ -4,7 +4,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import { AdminTournamentForm } from "@/components/admin-tournament-form"
 
 async function getTournament(id, token) {
-  const response = await fetch(`${process.env.BACKEND_URL}/api/tournaments/${id}`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/tournaments/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

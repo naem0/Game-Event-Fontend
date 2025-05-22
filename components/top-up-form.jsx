@@ -9,6 +9,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useToast } from "@/hooks/use-toast"
 import { Upload } from "lucide-react"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import bkashLogo from "@/public/BKash_Logo_icon-700x662.png"
+import nagadLogo from "@/public/Nagad_Logo_full-498x700.png"
+import Image from "next/image"
 
 export function TopUpForm({ onSuccess }) {
   const [amount, setAmount] = useState("")
@@ -40,7 +43,7 @@ export function TopUpForm({ onSuccess }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (!amount || !transactionId || !slipImage || !accountNumber || !paymentMethod) {
+    if (!amount || !paymentMethod || (!transactionId && !slipImage && !accountNumber)) {
       toast({
         title: "Error",
         description: "Please fill all fields and upload a slip image",
@@ -54,10 +57,10 @@ export function TopUpForm({ onSuccess }) {
     try {
       const formData = new FormData()
       formData.append("amount", amount)
-      formData.append("transactionId", transactionId)
+      if (transactionId) formData.append("transactionId", transactionId)
+      if (slipImage) formData.append("slipImage", slipImage)
       formData.append("accountNumber", accountNumber)
       formData.append("paymentMethod", paymentMethod)
-      formData.append("slipImage", slipImage)
 
       const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/topup`, {
         method: "POST",
@@ -106,7 +109,19 @@ export function TopUpForm({ onSuccess }) {
     <Card>
       <CardHeader>
         <CardTitle>Add Balance</CardTitle>
-        <CardDescription>Submit a top-up request by providing transaction details and proof of payment</CardDescription>
+        <CardDescription>
+          <ul className="list-disc space-y-1">
+            <li>
+              বিকাশ বা নগদ দিয়ে পেমেন্ট করতে নিচের যেকোনো একটি নম্বরে টাকা সেন্ড মানি করুন: বিকাশ: 01778368589 / নগদ: 01764450026
+            </li>
+            <li>যে নম্বর থেকে সেন্ড মানি করলেন, সেই নম্বরটি অ্যাকাউন্ট নম্বর ফিল্ডে লিখুন।</li>
+            <li>যত টাকা পাঠিয়েছেন, সেটি Amount (টাকার পরিমাণ) ফিল্ডে লিখুন।</li>
+            <li>পেমেন্ট মেথড সিলেক্ট করুন (বিকাশ/নগদ)।</li>
+            <li>পেমেন্টের স্ক্রিনশট আপলোড করুন।</li>
+            <li>সবশেষে সাবমিট বাটনে ক্লিক করুন।</li>
+            <li>✅ ২ ঘণ্টার মধ্যে আপনার রেজিস্ট্রেশন কনফার্ম করা হবে। দেরি হলে আমাদের জানাতে পারেন।</li>
+          </ul>
+          </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -129,31 +144,33 @@ export function TopUpForm({ onSuccess }) {
             <RadioGroup value={paymentMethod} onValueChange={setPaymentMethod} className="grid grid-cols-2 gap-4">
               <Label
                 htmlFor="bkash"
-                className={`flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground cursor-pointer ${
-                  paymentMethod === "bkash" ? "border-primary" : ""
-                }`}
+                className={`flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground cursor-pointer ${paymentMethod === "bkash" ? "border-primary" : ""
+                  }`}
               >
                 <RadioGroupItem value="bkash" id="bkash" className="sr-only" />
-                <img
-                  src="/placeholder.svg?height=60&width=100&text=bKash"
+                <Image
+                  src={bkashLogo}
                   alt="bKash"
                   className="h-10 object-contain"
+                  width={100}
+                  height={100}
                 />
-                <span className="mt-2 text-sm font-medium">bKash</span>
+                <span className="mt-2 text-sm font-medium">bKash (01778368589)</span>
               </Label>
               <Label
                 htmlFor="nagad"
-                className={`flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground cursor-pointer ${
-                  paymentMethod === "nagad" ? "border-primary" : ""
-                }`}
+                className={`flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground cursor-pointer ${paymentMethod === "nagad" ? "border-primary" : ""
+                  }`}
               >
                 <RadioGroupItem value="nagad" id="nagad" className="sr-only" />
-                <img
-                  src="/placeholder.svg?height=60&width=100&text=Nagad"
+                <Image
+                  src={nagadLogo}
+                  width={100}
+                  height={100}
                   alt="Nagad"
                   className="h-10 object-contain"
                 />
-                <span className="mt-2 text-sm font-medium">Nagad</span>
+                <span className="mt-2 text-sm font-medium">Nagad (01764450026)</span>
               </Label>
             </RadioGroup>
           </div>
@@ -167,18 +184,17 @@ export function TopUpForm({ onSuccess }) {
               placeholder="Enter your account number"
               required
             />
+            <p className="text-xs text-muted-foreground">Enter tha Bkash or Nagad account number</p>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="transactionId">Transaction ID</Label>
+            <Label htmlFor="transactionId">Transaction ID (Optional)</Label>
             <Input
               id="transactionId"
               value={transactionId}
               onChange={(e) => setTransactionId(e.target.value)}
               placeholder="Enter transaction ID"
-              required
             />
-            <p className="text-xs text-muted-foreground">Enter the transaction ID from your payment method</p>
           </div>
 
           <div className="space-y-2">

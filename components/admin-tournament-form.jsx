@@ -31,6 +31,8 @@ export function AdminTournamentForm({ tournament, onSuccess }) {
   const [perKillPrize, setPerKillPrize] = useState(tournament?.perKillPrize || "")
   const [rules, setRules] = useState(tournament?.rules || "")
   const [maxPlayers, setMaxPlayers] = useState(tournament?.maxPlayers || "")
+  const [roomId, setRoomId] = useState(tournament?.roomId || "")
+  const [roomPassword, setRoomPassword] = useState(tournament?.roomPassword || "")
   const [isActive, setIsActive] = useState(tournament?.isActive !== undefined ? tournament.isActive : true)
   const [isCompleted, setIsCompleted] = useState(tournament?.isCompleted || false)
 
@@ -127,6 +129,8 @@ export function AdminTournamentForm({ tournament, onSuccess }) {
       formData.append("perKillPrize", perKillPrize)
       formData.append("rules", rules)
       formData.append("maxPlayers", maxPlayers)
+      if (roomId) formData.append("roomId", roomId)
+      if (roomPassword) formData.append("roomPassword", roomPassword)
       formData.append("isActive", isActive)
       formData.append("isCompleted", isCompleted)
 
@@ -389,6 +393,27 @@ export function AdminTournamentForm({ tournament, onSuccess }) {
                 </div>
               </>
             )}
+            <div className="space-y-2">
+              <Label htmlFor="perKillPrize">Room Id (Optional)</Label>
+              <Input
+                id="roomId"
+                value={roomId}
+                onChange={(e) => setRoomId(e.target.value)}
+                placeholder="e.g., 123456"
+                type="text"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="maxPlayers">Room Password (Optional)</Label>
+              <Input
+                id="roomPassword"
+                value={roomPassword}
+                onChange={(e) => setRoomPassword(e.target.value)}
+                placeholder="e.g., 123456"
+                type="text"
+              />
+            </div>
           </div>
 
           <div className="space-y-2">

@@ -1,7 +1,7 @@
 import { TournamentDetails } from "@/components/tournament-details"
 
 async function getTournament(id) {
-  const response = await fetch(`${process.env.BACKEND_URL}/api/tournaments/${id}`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/tournaments/${id}`, {
     cache: "no-store",
   })
 
