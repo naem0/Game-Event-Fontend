@@ -210,11 +210,11 @@ export function UserManagement() {
                     <Eye className="h-4 w-4 mr-1" />
                     Details
                   </Button>
-                  {user.role === "user" && (
+                  {/* {user.role === "user" && (
                     <Button variant="outline" size="sm" onClick={() => openPromoteDialog(user)}>
                       Promote
                     </Button>
-                  )}
+                  )} */}
                   {user.isSuspended ? (
                     <Button
                       variant="outline"

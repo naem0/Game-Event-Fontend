@@ -73,7 +73,7 @@ export function LoginForm() {
         </Link>
       </div>
       {/* For Staging */}
-      <div>
+      {/* <div>
         <h4 className="text-lg font-bold text-center text-red-500 mb-3">
           Damo Login
         </h4>
@@ -89,7 +89,7 @@ export function LoginForm() {
             <p>Password: user1234</p>
           </div>
         </div>
-        </div>
+        </div> */}
       {/* End For Staging */}
     </form>
   )
