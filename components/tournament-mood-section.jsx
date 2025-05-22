@@ -6,6 +6,11 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { useToast } from "@/hooks/use-toast"
 import { TournamentMoodSkeleton } from "./tournament-mood-skeleton"
+import ClassicImg from "@/public/fire-and-ice-battle-free-fire-desktop-51rwcxoxsi9ffh3k.jpg"
+import ArcadeImg from "@/public/free-fire-desktop-blazing-skin-poster-l8e42trlbgwo5oen.jpg"
+import RankedImg from "@/public/free-fire-desktop-devil-samurai-skin-obyfgoqn0hwf3dbc.jpg"
+import CasualImg from "@/public/free-fire-desktop-in-aesthetic-blue-lcz6gtdpqslwp7wx.jpg"
+import Image from "next/image"
 
 export function TournamentMoodSection() {
   const [moods, setMoods] = useState([])
@@ -40,10 +45,10 @@ export function TournamentMoodSection() {
   // Images for each mood type
   const getMoodImage = (mood) => {
     const moodImages = {
-      Classic: "/placeholder.svg?height=200&width=300&text=Classic",
-      Arcade: "/placeholder.svg?height=200&width=300&text=Arcade",
-      Ranked: "/placeholder.svg?height=200&width=300&text=Ranked",
-      Casual: "/placeholder.svg?height=200&width=300&text=Casual",
+      Classic: ClassicImg,
+      Arcade: ArcadeImg,
+      Ranked: RankedImg,
+      Casual: CasualImg,
     }
 
     return moodImages[mood] || "/placeholder.svg?height=200&width=300&text=Gaming"
@@ -65,10 +70,12 @@ export function TournamentMoodSection() {
           {moods.map((mood) => (
             <Card key={mood} className="text-center hover:shadow-md transition-shadow">
               <div className="h-40 overflow-hidden">
-                <img
+                <Image
+                  width={300}
+                  height={200}
                   src={getMoodImage(mood) || "/placeholder.svg"}
                   alt={`${mood} tournaments`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover overflow-hidden"
                 />
               </div>
               <CardHeader>
