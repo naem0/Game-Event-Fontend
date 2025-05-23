@@ -89,7 +89,7 @@ export function MainFooter() {
               <p>123 Gaming Street</p>
               <p>Dhaka, Bangladesh</p>
               <p>Email: info@gametournaments.com</p>
-              <p>Phone: +8801764450026</p>
+              <p>Phone: +8801329812522</p>
             </address>
           </div>
         </div>

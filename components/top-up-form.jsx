@@ -112,7 +112,7 @@ export function TopUpForm({ onSuccess }) {
         <CardDescription>
           <ul className="list-disc space-y-1">
             <li>
-              বিকাশ বা নগদ দিয়ে পেমেন্ট করতে নিচের যেকোনো একটি নম্বরে টাকা সেন্ড মানি করুন: বিকাশ: 01778368589 / নগদ: 01764450026
+              বিকাশ বা নগদ দিয়ে পেমেন্ট করতে নিচের যেকোনো একটি নম্বরে টাকা সেন্ড মানি করুন: বিকাশ: 01778368589 / নগদ: 01329812522
             </li>
             <li>যে নম্বর থেকে সেন্ড মানি করলেন, সেই নম্বরটি অ্যাকাউন্ট নম্বর ফিল্ডে লিখুন।</li>
             <li>যত টাকা পাঠিয়েছেন, সেটি Amount (টাকার পরিমাণ) ফিল্ডে লিখুন।</li>
@@ -170,7 +170,7 @@ export function TopUpForm({ onSuccess }) {
                   alt="Nagad"
                   className="h-10 object-contain"
                 />
-                <span className="mt-2 text-sm font-medium">Nagad (01764450026)</span>
+                <span className="mt-2 text-sm font-medium">Nagad (01329812522)</span>
               </Label>
             </RadioGroup>
           </div>
