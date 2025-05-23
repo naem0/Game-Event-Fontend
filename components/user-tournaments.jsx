@@ -89,7 +89,7 @@ console.log("User Registrations:", registrations)
                     </TableCell>
                     <TableCell>
                       <p className="font-medium">Room Id: {registration?.tournament?.roomId}</p>
-                      <p className="text-xs font-mono">Room Password: {registration?.tournament?.roomPassword}</p>
+                      <p className="text-xs font-mono">Password: {registration?.tournament?.roomPassword}</p>
                     </TableCell>
                     <TableCell>
                       {format(new Date(registration.tournament.matchSchedule), "MMM d, yyyy h:mm a")}
